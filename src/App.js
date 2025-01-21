@@ -82,8 +82,6 @@ function App() {
           </Button>
         </div>
       </div>
-
-      <hr />
       <div className="split-bill-block">
         {selectedFriend && (
           <FormSplitBill
@@ -193,6 +191,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
     e.preventDefault();
 
     if (!bill || !userExpense) return;
+    // !!
     onSplitBill(whoIsPaying === "user" ? friendExpense : -userExpense);
   }
 

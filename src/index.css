@@ -26,12 +26,22 @@ code {
 }
 
 .button {
- color: rgb(15, 14, 14);
  background-color: rgb(179, 239, 250);
  border-radius: 0.8rem;
  margin: 0.4rem 0;
  padding: 0.3rem 0.6rem;
 }
+
+.app {
+ display: flex;
+ flex-flow: row nowrap;
+ justify-content: space-between;
+}
+
+/* .split-bill-block {
+ align-self: right;
+ display: inline-block;
+} */
 
 .app .friends-list {
  padding: 0;
@@ -56,15 +66,20 @@ code {
 }
 
 .friend-selected {
- background-color: rgb(207, 253, 234);
+ border: solid 2px rgb(72, 196, 218);
 }
 
 form {
- border: 1px solid green;
-  display: flex;
-  flex-flow: column nowrap;
-  padding: 0.4rem;
-  width: fit-content;
+ border: 1px solid rgb(5, 46, 184);
+ display: flex;
+ flex-flow: column nowrap;
+ padding: 0.4rem;
+ width: fit-content;
+}
+
+.form-add-friend {
+ background-color: rgb(247, 214, 240);
+
 }
 
 .hidden {
