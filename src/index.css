@@ -1,6 +1,7 @@
 :root {
- background-color: rgb(241, 244, 252);
- padding: 1rem;
+ background-color: rgb(32, 66, 117);
+ color: white;
+ padding: 0.4rem;
 }
 
 body {
@@ -38,14 +39,9 @@ code {
  justify-content: space-between;
 }
 
-/* .split-bill-block {
- align-self: right;
- display: inline-block;
-} */
-
 .app .friends-list {
  padding: 0;
- width: 16rem;
+ width: 12rem;
 }
 
 .app .friends-list ul {
@@ -53,33 +49,45 @@ code {
 }
 
 .friend-item, .friend-selected {
- border-bottom: 1px solid black;
+ border-bottom: 1px solid white;
  list-style: none;
+ line-height:1rem;
  margin-bottom: 1rem;
  padding: 0.4rem;
  max-width: 15rem;
-
+ 
  img {
-  display: block;
   align-self: left;
+  display: inline-block;
+  width: 2.2rem;
+  height: 2.2rem;
+ }
+ 
+ .friend-name {
+  display: inline-block;
+  margin-left: 0.5rem;
+ }
+ 
+ p {
+  padding: 0;
  }
 }
 
+
 .friend-selected {
- border: solid 2px rgb(72, 196, 218);
+ background-color: rgb(10, 114, 133);
 }
 
 form {
- border: 1px solid rgb(5, 46, 184);
  display: flex;
  flex-flow: column nowrap;
  padding: 0.4rem;
  width: fit-content;
 }
 
-.form-add-friend {
- background-color: rgb(247, 214, 240);
-
+.add-friend-form, .split-bill-form {
+ background-color: rgb(10, 114, 133);
+ width: fit-content;
 }
 
 .hidden {
@@ -92,9 +100,12 @@ form {
  width: fit-content;
 }
 
-.form-add-friend > input,
-.form-add-friend > button {
+.add-friend-form > input,
+.add-friend-form > button {
  align-self: right;
- max-width: 10rem;
- margin-bottom: 0.6rem;
+ margin-bottom: 0.4rem;
+}
+
+.split-bill-form {
+ border-left: 1px solid rgb(248, 248, 95);
 }
