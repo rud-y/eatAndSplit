@@ -23,12 +23,17 @@ code {
     monospace;
 }
 
+.heading {
+ color: #4da4be;
+ text-align: center;
+}
+
 .red {
- color: rgb(173, 8, 8);
+ color: rgb(223, 6, 6);
 }
 
 .green {
- color: rgb(28, 158, 11);
+ color: rgb(30, 201, 7);
 }
 
 .button {
@@ -45,41 +50,56 @@ code {
  justify-content: space-between;
 }
 
-.app .friends-list {
+.friends-list {
+ margin-right: 0.4rem;
  padding: 0;
- width: 12rem;
 }
 
-.app .friends-list ul {
+.friends-list ul {
  padding: 0;
 }
 
 .friend-item, .friend-selected {
- background-color: #1b365d;
+ display: flex;
+ flex-flow: row nowrap;
+ justify-content: space-between ;
+ background-color: #395672;
  border-radius: 0.4rem;
  color: #ffffff;
  list-style: none;
  line-height: 1.1rem;
  margin-bottom: 0.6rem;
- max-width: 15rem;
  padding: 0.4rem;
+ max-width: 22rem;
+ /* min-width: 20rem; */
  
  img {
-  align-self: left;
-  display: inline-block;
-  width: 2.6rem;
-  height: 2.6rem;
+  margin-right: 0.5rem;
+  height: 3rem;
+  width: 3rem;
  }
  
  .friend-name {
-  display: inline-block;
   font-weight: 700;
-  margin-left: 0.5rem;
  }
  
  p {
   margin: 0;
  }
+
+}
+
+.image-and-friend-name-container {
+ display: flex;
+ flex-flow: row nowrap;
+ justify-content: flex-start;
+ margin-right: 1rem;
+}
+
+.friend-name-and-text {
+ display: flex;
+ flex-flow: column nowrap;
+ justify-content: space-between;
 }
 
 .friend-selected, .split-bill-form {
@@ -108,7 +128,11 @@ form {
 }
 
 .add-friend-form > input,
-.split-bill-form> input,
+.split-bill-form > input,
 .add-friend-form > button {
  margin-bottom: 0.4rem;
+}
+
+.split-bill-form {
+ margin-top: 1rem;
 }

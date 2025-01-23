@@ -50,6 +50,7 @@ function App() {
 
   function handleSelection(friend) {
     setSelectedFriend((current) => (current?.id === friend.id ? null : friend));
+    setShowAddFriend(false);
   }
 
   // !!
@@ -65,28 +66,30 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <div className="friends-list">
-        <h2>Eat-n-Split</h2>
-        <FriendsList
-          friends={friends}
-          selectedFriend={selectedFriend}
-          onSelection={handleSelection}
-        />
-        {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
-        <Button onClick={handleShowAddFriend}>
-          {!showAddFriend ? "Add new friend" : "Close Form"}
-        </Button>
-      </div>
-      <div className="split-bill-block">
-        {selectedFriend && (
-          <FormSplitBill
+    <>
+      <h2 className="heading">Eat-n-Split</h2>
+      <div className="app">
+        <div className="friends-list">
+          <FriendsList
+            friends={friends}
             selectedFriend={selectedFriend}
-            onSplitBill={handleSplitBill}
+            onSelection={handleSelection}
           />
-        )}
+          {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+          <Button onClick={handleShowAddFriend}>
+            {!showAddFriend ? "Add new friend" : "Close Form"}
+          </Button>
+        </div>
+        <div className="split-bill-block">
+          {selectedFriend && (
+            <FormSplitBill
+              selectedFriend={selectedFriend}
+              onSplitBill={handleSplitBill}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -110,21 +113,28 @@ function Friend({ friend, selectedFriend, onSelection }) {
 
   return (
     <li className={isSelected ? "friend-selected" : "friend-item"}>
-      <img src={friend.image} alt="A profile pic of a person" />
-      <p className="friend-name">{friend.name}</p>
-      {friend.balance < 0 && (
-        <p className="red">{`You owe ${friend.name} £${Math.abs(
-          friend.balance
-        )}`}</p>
-      )}
+      <div className="image-and-friend-name-container">
+        <img src={friend.image} alt="A profile pic of a person" />
+        <div className="friend-name-and-text">
+          <p className="friend-name">{friend.name}</p>
 
-      {friend.balance > 0 && (
-        <p className="green">{`${friend.name} owes you £${Math.abs(
-          friend.balance
-        )}`}</p>
-      )}
+          {friend.balance < 0 && (
+            <p className="red">{`You owe ${friend.name} £${Math.abs(
+              friend.balance
+            )}`}</p>
+          )}
 
-      {friend.balance === 0 && <p>{`You and ${friend.name} are even.`}</p>}
+          {friend.balance > 0 && (
+            <p className="green">{`${friend.name} owes you £${Math.abs(
+              friend.balance
+            )}`}</p>
+          )}
+
+          {friend.balance === 0 && (
+            <p className="even">{`You and ${friend.name} are even.`}</p>
+          )}
+        </div>
+      </div>
       <Button onClick={() => onSelection(friend)}>
         {isSelected ? "Close" : "Select"}
       </Button>
