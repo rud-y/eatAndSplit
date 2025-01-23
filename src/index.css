@@ -1,12 +1,17 @@
 :root {
- background-color: rgb(32, 66, 117);
- color: white;
+ background-color: #1e1f1f;
  padding: 0.4rem;
+}
+
+.kotta-one-regular {
+ font-family: "Kotta One", serif;
+ font-weight: 400;
+ font-style: normal;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, "Kotta One", 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,18 +24,19 @@ code {
 }
 
 .red {
- color: rgb(241, 38, 38);
+ color: rgb(173, 8, 8);
 }
 
 .green {
- color: rgb(39, 206, 17);
+ color: rgb(28, 158, 11);
 }
 
 .button {
- background-color: rgb(179, 239, 250);
+ background-color: #98e8ee;
  border-radius: 0.8rem;
  margin: 0.4rem 0;
  padding: 0.3rem 0.6rem;
+ font-weight: 700;
 }
 
 .app {
@@ -49,63 +55,60 @@ code {
 }
 
 .friend-item, .friend-selected {
- border-bottom: 1px solid white;
+ background-color: #1b365d;
+ border-radius: 0.4rem;
+ color: #ffffff;
  list-style: none;
- line-height:1rem;
- margin-bottom: 1rem;
- padding: 0.4rem;
+ line-height: 1.1rem;
+ margin-bottom: 0.6rem;
  max-width: 15rem;
+ padding: 0.4rem;
  
  img {
   align-self: left;
   display: inline-block;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.6rem;
+  height: 2.6rem;
  }
  
  .friend-name {
   display: inline-block;
+  font-weight: 700;
   margin-left: 0.5rem;
  }
  
  p {
-  padding: 0;
+  margin: 0;
  }
 }
 
-
-.friend-selected {
- background-color: rgb(10, 114, 133);
+.friend-selected, .split-bill-form {
+ background-color: #f1f7ff;
+ color: #1b365d;
+ border-radius: 0.4rem;
 }
 
 form {
  display: flex;
  flex-flow: column nowrap;
  padding: 0.4rem;
- width: fit-content;
+
+ input, select {
+  background-color: #f2c75c;
+  border-radius: 0.4rem;
+  height: 1.32rem;
+ }
 }
 
-.add-friend-form, .split-bill-form {
- background-color: rgb(10, 114, 133);
- width: fit-content;
-}
-
-.hidden {
- visibility: hidden;
-}
-
-.add-friend-form-with-button {
- display: flex;
- flex-flow: column nowrap;
- width: fit-content;
+.add-friend-form {
+ background-color: #1b365d;
+ border-radius: 0.4rem;
+ color: #ffffff;
+ font-weight: 700;
 }
 
 .add-friend-form > input,
+.split-bill-form> input,
 .add-friend-form > button {
- align-self: right;
  margin-bottom: 0.4rem;
-}
-
-.split-bill-form {
- border-left: 1px solid rgb(248, 248, 95);
 }

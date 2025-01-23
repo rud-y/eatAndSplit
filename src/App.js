@@ -45,6 +45,7 @@ function App() {
 
   function handleAddFriend(newFriend) {
     setFriends((allFriends) => [...allFriends, newFriend]);
+    setShowAddFriend(false);
   }
 
   function handleSelection(friend) {
@@ -72,13 +73,10 @@ function App() {
           selectedFriend={selectedFriend}
           onSelection={handleSelection}
         />
-
-        <div className="add-friend-form-with-button">
-          {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
-          <Button onClick={handleShowAddFriend}>
-            {!showAddFriend ? "Add new friend" : "Close Form"}
-          </Button>
-        </div>
+        {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+        <Button onClick={handleShowAddFriend}>
+          {!showAddFriend ? "Add new friend" : "Close Form"}
+        </Button>
       </div>
       <div className="split-bill-block">
         {selectedFriend && (
@@ -115,13 +113,13 @@ function Friend({ friend, selectedFriend, onSelection }) {
       <img src={friend.image} alt="A profile pic of a person" />
       <p className="friend-name">{friend.name}</p>
       {friend.balance < 0 && (
-        <p className="red">{`You owe ${friend.name} ${Math.abs(
+        <p className="red">{`You owe ${friend.name} £${Math.abs(
           friend.balance
         )}`}</p>
       )}
 
       {friend.balance > 0 && (
-        <p className="green">{`${friend.name} owes you ${Math.abs(
+        <p className="green">{`${friend.name} owes you £${Math.abs(
           friend.balance
         )}`}</p>
       )}
