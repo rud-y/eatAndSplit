@@ -29,19 +29,20 @@ code {
 }
 
 .red {
- color: rgb(223, 6, 6);
+ color: rgb(247, 114, 26);
 }
 
 .green {
- color: rgb(30, 201, 7);
+ color: rgb(53, 228, 30);
 }
 
 .button {
  background-color: #98e8ee;
  border-radius: 0.8rem;
+ font-weight: 700;
+ height: 2.2rem;
  margin: 0.4rem 0;
  padding: 0.3rem 0.6rem;
- font-weight: 700;
 }
 
 .app {
@@ -115,7 +116,12 @@ form {
  input, select {
   background-color: #f2c75c;
   border-radius: 0.4rem;
-  height: 1.32rem;
+  height: 2.2rem;
+  font-size: large;
+ }
+
+ select {
+  height: 2.5rem;
  }
 }
 
