@@ -1,5 +1,5 @@
 :root {
- background-color: #1e1f1f;
+ background-color: #1b263d;
  padding: 0.4rem;
 }
 
@@ -53,6 +53,7 @@ code {
 .friends-list {
  margin-right: 0.4rem;
  padding: 0;
+ max-width: 24rem;
 }
 
 .friends-list ul {
@@ -60,22 +61,20 @@ code {
 }
 
 .friend-item, .friend-selected {
- display: flex;
- flex-flow: row nowrap;
- justify-content: space-between ;
  background-color: #395672;
  border-radius: 0.4rem;
  color: #ffffff;
+ display: flex;
+ flex-flow: row nowrap;
+ justify-content: space-between ;
  list-style: none;
  line-height: 1.1rem;
  margin-bottom: 0.6rem;
  padding: 0.4rem;
- max-width: 22rem;
- /* min-width: 20rem; */
  
  img {
-  margin-right: 0.5rem;
   height: 3rem;
+  margin-right: 0.5rem;
   width: 3rem;
  }
  
@@ -121,7 +120,7 @@ form {
 }
 
 .add-friend-form {
- background-color: #1b365d;
+ background-color: #395672;
  border-radius: 0.4rem;
  color: #ffffff;
  font-weight: 700;
@@ -135,4 +134,15 @@ form {
 
 .split-bill-form {
  margin-top: 1rem;
+}
+
+@media (max-width: 650px) {
+ .app {
+  display: flex;
+  flex-flow: column nowrap;
+ }
+
+ .friends-list {
+  max-width: 98%;
+  }
 }
