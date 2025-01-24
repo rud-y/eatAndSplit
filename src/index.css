@@ -56,6 +56,10 @@ code {
  color: #ffffff;
  padding: 0.2rem 0.5rem;
  width: fit-content;
+ 
+ span {
+  margin-left: 0.4rem;
+ }
 }
 
 .friends-list {

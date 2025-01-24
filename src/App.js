@@ -5,19 +5,19 @@ const initialFriends = [
   {
     id: 118836,
     name: "Anthony",
-    image: "https://i.pravatar.cc/48?u=217836",
+    image: "https://i.pravatar.cc/48?u=51022",
     balance: -7,
   },
   {
     id: 933372,
     name: "Anna",
-    image: "https://i.pravatar.cc/48?u=653372",
+    image: "https://i.pravatar.cc/48?u=21100",
     balance: 20,
   },
   {
     id: 499476,
     name: "Donald",
-    image: "https://i.pravatar.cc/48?u=889476",
+    image: "https://i.pravatar.cc/48?u=41021",
     balance: 0,
   },
 ];
@@ -78,13 +78,13 @@ function App() {
       <div className="app">
         <div className="friends-list">
           <p className="total-balance">
-            Total balance:{" "}
+            Total balance:
             <span
               className={
                 totalBalance < 0 ? "red" : totalBalance > 0 ? "green" : ""
               }
             >
-              {totalBalance}
+              £{totalBalance}
             </span>
           </p>
           <FriendsList
