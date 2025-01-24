@@ -55,6 +55,7 @@ code {
  background-color: #395672;
  color: #ffffff;
  padding: 0.2rem 0.5rem;
+ width: fit-content;
 }
 
 .friends-list {
