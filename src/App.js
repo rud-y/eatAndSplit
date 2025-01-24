@@ -34,6 +34,7 @@ function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
+  const totalBalance = getTotalBalance();
 
   useEffect(() => {
     setFriends(initialFriends);
@@ -65,11 +66,27 @@ function App() {
     setSelectedFriend(null);
   }
 
+  function getTotalBalance() {
+    let balance = 0;
+    friends.map((friend) => (balance += friend.balance));
+    return balance;
+  }
+
   return (
     <>
       <h2 className="heading">Eat-n-Split</h2>
       <div className="app">
         <div className="friends-list">
+          <p className="total-balance">
+            Total balance:{" "}
+            <span
+              className={
+                totalBalance < 0 ? "red" : totalBalance > 0 ? "green" : ""
+              }
+            >
+              {totalBalance}
+            </span>
+          </p>
           <FriendsList
             friends={friends}
             selectedFriend={selectedFriend}

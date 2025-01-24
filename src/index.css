@@ -51,6 +51,12 @@ code {
  justify-content: space-between;
 }
 
+.total-balance {
+ background-color: #395672;
+ color: #ffffff;
+ padding: 0.2rem 0.5rem;
+}
+
 .friends-list {
  margin-right: 0.4rem;
  padding: 0;
