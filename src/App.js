@@ -73,7 +73,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="app" tabindex={0} aria-label="Entering Eat and split web app">
       <h2 className="heading">Eat-n-Split</h2>
       <div className="app">
         <div className="friends-list">
@@ -88,12 +88,17 @@ function App() {
             </span>
           </p>
           <FriendsList
+            tabindex={0}
+            aria-label="Entering friends list"
             friends={friends}
             selectedFriend={selectedFriend}
             onSelection={handleSelection}
           />
           {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
-          <Button onClick={handleShowAddFriend}>
+          <Button
+            aria-label="Add new friend button"
+            onClick={handleShowAddFriend}
+          >
             {!showAddFriend ? "Add new friend" : "Close Form"}
           </Button>
         </div>
@@ -106,7 +111,7 @@ function App() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -130,7 +135,11 @@ function Friend({ friend, selectedFriend, onSelection }) {
 
   return (
     <li className={isSelected ? "friend-selected" : "friend-item"}>
-      <div className="image-and-friend-name-container">
+      <div
+        className="image-and-friend-name-container"
+        tabindex={0}
+        aria-label={`${friend.name} is selected.`}
+      >
         <img src={friend.image} alt="A profile pic of a person" />
         <div className="friend-name-and-text">
           <p className="friend-name">{friend.name}</p>
@@ -183,12 +192,13 @@ function FormAddFriend({ onAddFriend }) {
   }
 
   return (
-    <form className="add-friend-form" onSubmit={handleFormSubmit}>
+    <form className="add-friend-form" onSubmit={handleFormSubmit} tabindex={0} aria-label="Entering Add new friend form">
       <label>Friend's name:</label>
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        aria-label="Enter a new friend name"
       />
 
       <label>Image url:</label>
@@ -196,8 +206,9 @@ function FormAddFriend({ onAddFriend }) {
         type="text"
         value={image}
         onChange={(e) => setImage(e.target.value)}
+        aria-label="Random image is generated for this input"
       />
-      <Button>Add</Button>
+      <Button aria-label="Add new friend to the list">Add</Button>
     </form>
   );
 }
