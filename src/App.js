@@ -73,7 +73,7 @@ function App() {
   }
 
   return (
-    <div className="app" tabindex={0} aria-label="Entering Eat and split web app">
+    <div className="" tabindex={0} aria-label="Entering Eat and split web app">
       <h2 className="heading">Eat-n-Split</h2>
       <div className="app">
         <div className="friends-list">
@@ -222,7 +222,13 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!bill || !userExpense) return;
+    if (!bill) {
+     alert("Please enter the bill value!");
+     return;
+    } else if(!userExpense) {
+     alert("Please enter your expense!")
+     return;
+    } 
     // !!
     onSplitBill(whoIsPaying === "user" ? friendExpense : -userExpense);
   }

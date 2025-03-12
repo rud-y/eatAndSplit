@@ -39,16 +39,23 @@ code {
 .button {
  background-color: #98e8ee;
  border-radius: 0.8rem;
+ cursor: pointer;
  font-weight: 700;
  height: 2.2rem;
  margin: 0.4rem 0;
  padding: 0.3rem 0.6rem;
 }
 
+.button[text]:hover {
+  font-weight: bold;
+}
+
 .app {
  display: flex;
- flex-flow: row nowrap;
- justify-content: space-between;
+ flex-flow: column nowrap;
+ justify-content: center;
+ margin: 0 auto;
+ max-width: 96%;
 }
 
 .total-balance {
@@ -65,11 +72,14 @@ code {
 .friends-list {
  margin-right: 0.4rem;
  padding: 0;
- max-width: 24rem;
 }
 
 .friends-list ul {
  padding: 0;
+}
+
+.split-bill-block, .friends-list {
+ max-width: 24rem;
 }
 
 .friend-item, .friend-selected {
@@ -153,13 +163,10 @@ form {
  margin-top: 1rem;
 }
 
-@media (max-width: 650px) {
+@media (min-width: 780px) {
  .app {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
+  justify-content: space-around;
  }
-
- .friends-list {
-  max-width: 98%;
-  }
 }
