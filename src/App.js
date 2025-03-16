@@ -32,13 +32,27 @@ function Button({ children, onClick }) {
 
 function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
-  const [friends, setFriends] = useState([]);
+  const [friends, setFriends] = useState(() => {
+   const storedFriends = JSON.parse(localStorage.getItem("Friends")) || [];
+
+   const uniqueFriends = Array.from(
+     new Map(
+       [...storedFriends, ...initialFriends].map(friend => [friend.id, friend])
+     ).values()
+   );
+
+
+   return uniqueFriends;
+  });
   const [selectedFriend, setSelectedFriend] = useState(null);
   const totalBalance = getTotalBalance();
 
-  useEffect(() => {
-    setFriends(initialFriends);
-  }, []);
+
+   useEffect(() => {
+   localStorage.setItem('Friends', JSON.stringify(friends));
+  }, [friends])
+
+
 
   function handleShowAddFriend(e) {
     setShowAddFriend((show) => !show);
@@ -52,6 +66,18 @@ function App() {
   function handleSelection(friend) {
     setSelectedFriend((current) => (current?.id === friend.id ? null : friend));
     setShowAddFriend(false);
+  }
+
+  function handleDeleteFriend(friend) {
+   const confirmDelete = window.confirm('Are you sure you want to remove this friend?');
+
+   if(!confirmDelete) {
+    return 
+   } else {
+    setFriends((allFriends) => allFriends.filter(f => f.id !== friend.id))
+   }
+
+  
   }
 
   // !!
@@ -93,6 +119,7 @@ function App() {
             friends={friends}
             selectedFriend={selectedFriend}
             onSelection={handleSelection}
+            onDelete={handleDeleteFriend}
           />
           {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
           <Button
@@ -115,7 +142,7 @@ function App() {
   );
 }
 
-function FriendsList({ friends, selectedFriend, onSelection }) {
+function FriendsList({ friends, selectedFriend, onSelection, onDelete }) {
   return (
     <ul>
       {friends.map((friend) => (
@@ -124,13 +151,14 @@ function FriendsList({ friends, selectedFriend, onSelection }) {
           friend={friend}
           selectedFriend={selectedFriend}
           onSelection={onSelection}
+          onDelete={onDelete}
         />
       ))}
     </ul>
   );
 }
 
-function Friend({ friend, selectedFriend, onSelection }) {
+function Friend({ friend, selectedFriend, onSelection, onDelete }) {
   const isSelected = selectedFriend?.id === friend.id;
 
   return (
@@ -140,7 +168,7 @@ function Friend({ friend, selectedFriend, onSelection }) {
         tabindex={0}
         aria-label={`${friend.name} is selected.`}
       >
-        <img src={friend.image} alt="A profile pic of a person" />
+        <img src={friend.image} alt={`The face of ${friend.name}`} />
         <div className="friend-name-and-text">
           <p className="friend-name">{friend.name}</p>
 
@@ -161,9 +189,12 @@ function Friend({ friend, selectedFriend, onSelection }) {
           )}
         </div>
       </div>
-      <Button onClick={() => onSelection(friend)}>
-        {isSelected ? "Close" : "Select"}
-      </Button>
+      <div className="buttones">
+        <Button onClick={() => onDelete(friend)}>{"❌"}</Button>
+        <Button onClick={() => onSelection(friend)}>
+          {isSelected ? "Close" : "Select"}
+        </Button>
+      </div>
     </li>
   );
 }
@@ -175,7 +206,10 @@ function FormAddFriend({ onAddFriend }) {
   function handleFormSubmit(e) {
     e.preventDefault();
 
-    if (!name || !image) return;
+    if (!name || !image) {
+     alert('Enter the name of a new friend please!');
+     return;
+    }
 
     const id = Date.now();
 

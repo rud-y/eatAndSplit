@@ -50,6 +50,11 @@ code {
   font-weight: bold;
 }
 
+.buttones {
+ display: flex;
+ flex-flow: row nowrap;
+}
+
 .app {
  display: flex;
  flex-flow: column nowrap;
