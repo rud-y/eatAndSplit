@@ -33,26 +33,25 @@ function Button({ children, onClick }) {
 function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [friends, setFriends] = useState(() => {
-   const storedFriends = JSON.parse(localStorage.getItem("Friends")) || [];
+    const storedFriends = JSON.parse(localStorage.getItem("Friends")) || [];
 
-   const uniqueFriends = Array.from(
-     new Map(
-       [...storedFriends, ...initialFriends].map(friend => [friend.id, friend])
-     ).values()
-   );
+    const uniqueFriends = Array.from(
+      new Map(
+        [...storedFriends, ...initialFriends].map((friend) => [
+          friend.id,
+          friend,
+        ])
+      ).values()
+    );
 
-
-   return uniqueFriends;
+    return uniqueFriends;
   });
   const [selectedFriend, setSelectedFriend] = useState(null);
   const totalBalance = getTotalBalance();
 
-
-   useEffect(() => {
-   localStorage.setItem('Friends', JSON.stringify(friends));
-  }, [friends])
-
-
+  useEffect(() => {
+    localStorage.setItem("Friends", JSON.stringify(friends));
+  }, [friends]);
 
   function handleShowAddFriend(e) {
     setShowAddFriend((show) => !show);
@@ -69,15 +68,15 @@ function App() {
   }
 
   function handleDeleteFriend(friend) {
-   const confirmDelete = window.confirm('Are you sure you want to remove this friend?');
+    const confirmDelete = window.confirm(
+      "Are you sure you want to remove this friend?"
+    );
 
-   if(!confirmDelete) {
-    return 
-   } else {
-    setFriends((allFriends) => allFriends.filter(f => f.id !== friend.id))
-   }
-
-  
+    if (!confirmDelete) {
+      return;
+    } else {
+      setFriends((allFriends) => allFriends.filter((f) => f.id !== friend.id));
+    }
   }
 
   // !!
@@ -99,8 +98,8 @@ function App() {
   }
 
   return (
-    <div className="" tabindex={0} aria-label="Entering Eat and split web app">
-      <h2 className="heading">Eat-n-Split</h2>
+    <div className="" tabIndex={0} aria-label="Entering Split It Up web app">
+      <h2 className="heading">SplitItApp</h2>
       <div className="app">
         <div className="friends-list">
           <p className="total-balance">
@@ -114,7 +113,7 @@ function App() {
             </span>
           </p>
           <FriendsList
-            tabindex={0}
+            tabIndex={0}
             aria-label="Entering friends list"
             friends={friends}
             selectedFriend={selectedFriend}
@@ -165,8 +164,8 @@ function Friend({ friend, selectedFriend, onSelection, onDelete }) {
     <li className={isSelected ? "friend-selected" : "friend-item"}>
       <div
         className="image-and-friend-name-container"
-        tabindex={0}
-        aria-label={`${friend.name} is selected.`}
+        tabIndex={0}
+        aria-label={`${friend.name}. You owe ${friend.name} ${friend.balance} pounds.`}
       >
         <img src={friend.image} alt={`The face of ${friend.name}`} />
         <div className="friend-name-and-text">
@@ -190,7 +189,9 @@ function Friend({ friend, selectedFriend, onSelection, onDelete }) {
         </div>
       </div>
       <div className="buttones">
-        <Button onClick={() => onDelete(friend)}>{"❌"}</Button>
+        <Button aria-label="" onClick={() => onDelete(friend)}>
+          {"❌"}
+        </Button>
         <Button onClick={() => onSelection(friend)}>
           {isSelected ? "Close" : "Select"}
         </Button>
@@ -207,8 +208,8 @@ function FormAddFriend({ onAddFriend }) {
     e.preventDefault();
 
     if (!name || !image) {
-     alert('Enter the name of a new friend please!');
-     return;
+      alert("Enter the name of a new friend please!");
+      return;
     }
 
     const id = Date.now();
@@ -226,21 +227,27 @@ function FormAddFriend({ onAddFriend }) {
   }
 
   return (
-    <form className="add-friend-form" onSubmit={handleFormSubmit} tabindex={0} aria-label="Entering Add new friend form">
-      <label>Friend's name:</label>
+    <form
+      className="add-friend-form"
+      onSubmit={handleFormSubmit}
+      tabIndex={0}
+      aria-label="Entering Add new friend form"
+    >
+      <label htmlFor="friendName">Friend's name:</label>
       <input
+        id="friendName"
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        aria-label="Enter a new friend name"
+        // aria-label="Enter a new friend name"
       />
 
-      <label>Image url:</label>
+      <label htmlFor="friendImage">Image url:</label>
       <input
+        id="friendImage"
         type="text"
         value={image}
         onChange={(e) => setImage(e.target.value)}
-        aria-label="Random image is generated for this input"
       />
       <Button aria-label="Add new friend to the list">Add</Button>
     </form>
@@ -257,12 +264,12 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
     e.preventDefault();
 
     if (!bill) {
-     alert("Please enter the bill value!");
-     return;
-    } else if(!userExpense) {
-     alert("Please enter your expense!")
-     return;
-    } 
+      alert("Please enter the bill value!");
+      return;
+    } else if (!userExpense) {
+      alert("Please enter your expense!");
+      return;
+    }
     // !!
     onSplitBill(whoIsPaying === "user" ? friendExpense : -userExpense);
   }

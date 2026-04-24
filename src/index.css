@@ -55,6 +55,10 @@ code {
  flex-flow: row nowrap;
 }
 
+.buttones:nth-child(1) {
+ margin-right: 9rem !important;
+}
+
 .app {
  display: flex;
  flex-flow: column nowrap;
