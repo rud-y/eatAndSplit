@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const initialFriends = [
   {
     id: 118836,
-    name: "Anthony",
+    name: "Hugo",
     image: "https://i.pravatar.cc/48?u=51022",
     balance: -7,
   },
